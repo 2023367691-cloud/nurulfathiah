@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fathiah's professional portfolio in accounting, audit and tax.">
+  <title>Fathiah | Accounting • Audit • Tax</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f8f7f3; --surface: #ffffff; --ink: #20231f; --muted: #6f756d;
+      --line: #e7e5de; --accent: #526b58; --accent-dark: #354b3b;
+      --accent-soft: #e8eee7; --warm: #e9dfd0; --shadow: 0 18px 50px rgba(38,45,37,.08);
+      --nav-bg: rgba(248,247,243,.88);
+    }
+    body.dark {
+      --bg: #171b18; --surface: #202722; --ink: #f1f1eb; --muted: #b1b8af;
+      --line: #343d36; --accent: #a7c2a8; --accent-dark: #d2e2d0;
+      --accent-soft: #2c3a30; --warm: #3a342c; --shadow: 0 18px 50px rgba(0,0,0,.18);
+      --nav-bg: rgba(23,27,24,.9);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+    body { margin: 0; background: var(--bg); color: var(--ink); font-family: "DM Sans", sans-serif; line-height: 1.65; transition: background .25s, color .25s; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 42px)); margin: auto; }
+    .eyebrow { color: var(--accent); font-size: .76rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    h1,h2,h3 { line-height: 1.15; margin: 0; }
+    h1,h2 { font-family: "Playfair Display", serif; font-weight: 600; letter-spacing: -.025em; }
+    h1 { font-size: clamp(2.8rem, 7vw, 5.4rem); }
+    h2 { font-size: clamp(2.1rem, 4vw, 3.35rem); }
+    h3 { font-size: 1.12rem; }
+    p { color: var(--muted); }
+    .section { padding: 100px 0; }
+    .section-head { max-width: 650px; margin-bottom: 42px; }
+    .section-head .eyebrow { margin-bottom: 13px; display: block; }
+    .section-head p { margin: 16px 0 0; }
+    .navbar { position: sticky; top: 0; z-index: 100; background: var(--nav-bg); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav-inner { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { font-weight: 700; letter-spacing: -.04em; font-size: 1.18rem; white-space: nowrap; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { font-size: .86rem; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-actions { display: flex; gap: 8px; align-items: center; }
+    .icon-btn, .menu-btn { width: 40px; height: 40px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 50%; display: grid; place-items: center; }
+    .menu-btn { display: none; border-radius: 12px; }
+    .hero { padding: 74px 0 86px; }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr .85fr; align-items: center; gap: 65px; }
+    .hero .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 22px; }
+    .hero .eyebrow:before { content: ""; width: 28px; height: 1px; background: var(--accent); }
+    .hero h1 span { color: var(--accent); }
+    .hero-copy { max-width: 590px; font-size: 1.05rem; margin: 24px 0 30px; }
+    .button-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 19px; border-radius: 999px; font-weight: 600; font-size: .9rem; border: 1px solid var(--accent); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: #fff; background: var(--accent); }
+    body.dark .btn-primary { color: #172019; }
+    .btn-outline { color: var(--accent); background: transparent; }
+    .hero-photo-wrap { position: relative; max-width: 390px; justify-self: end; width: 100%; }
+    .hero-photo-wrap:before { content: ""; position: absolute; inset: 20px -18px -18px 18px; border: 1px solid var(--accent); border-radius: 48% 48% 24px 24px; opacity: .65; }
+    .hero-photo { position: relative; height: 440px; width: 100%; object-fit: cover; object-position: center; border-radius: 48% 48% 24px 24px; background: var(--warm); border: 8px solid var(--surface); box-shadow: var(--shadow); }
+    .photo-note { font-size: .75rem; color: var(--muted); text-align: center; margin: 28px 0 0; }
+    .hero-stamp { position: absolute; bottom: 32px; left: -32px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; box-shadow: var(--shadow); max-width: 210px; }
+    .hero-stamp strong { display: block; font-size: .9rem; }
+    .hero-stamp small { color: var(--muted); }
+    .quick-facts { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-top: 55px; max-width: 690px; }
+    .fact { border-top: 1px solid var(--line); padding-top: 15px; }
+    .fact strong { display: block; font-size: .98rem; }
+    .fact span { color: var(--muted); font-size: .82rem; }
+    .soft-section { background: var(--surface); border-block: 1px solid var(--line); }
+    .about-grid { display: grid; grid-template-columns: .78fr 1.22fr; gap: 70px; align-items: start; }
+    .about-card { padding: 28px; background: var(--accent-soft); border-radius: 22px; }
+    .about-card .quote-mark { color: var(--accent); font-family: Georgia, serif; font-size: 3rem; line-height: 1; }
+    .about-card p { color: var(--ink); font-size: 1.05rem; }
+    .about-content p { margin-top: 0; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 23px; }
+    .pill { background: var(--accent-soft); color: var(--accent-dark); border-radius: 999px; padding: 7px 12px; font-size: .79rem; font-weight: 600; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 25px; transition: transform .22s, box-shadow .22s; }
+    .card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+    .card-icon { width: 46px; height: 46px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); border-radius: 14px; margin-bottom: 21px; font-size: 1.25rem; }
+    .card p { font-size: .9rem; margin-bottom: 0; }
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .skill-group { padding: 25px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); }
+    .skill-group h3 { margin-bottom: 16px; }
+    .skill-group .pill-row { margin-top: 0; }
+    .timeline { position: relative; margin-left: 8px; }
+    .timeline:before { content: ""; position: absolute; top: 7px; bottom: 10px; left: 8px; width: 1px; background: var(--line); }
+    .timeline-item { position: relative; padding: 0 0 34px 38px; }
+    .timeline-item:before { content: ""; position: absolute; top: 7px; left: 2px; width: 13px; height: 13px; background: var(--accent); border: 3px solid var(--bg); border-radius: 50%; }
+    .timeline-meta { color: var(--accent); font-size: .8rem; font-weight: 700; margin-bottom: 7px; }
+    .timeline-item h3 { margin-bottom: 5px; }
+    .timeline-item .place { color: var(--muted); font-size: .9rem; }
+    .timeline-item ul { color: var(--muted); padding-left: 19px; font-size: .92rem; }
+    .timeline-item li { margin: 5px 0; }
+    .project-card { padding: 0; overflow: hidden; }
+    .project-top { padding: 23px 23px 0; display: flex; justify-content: space-between; align-items: center; }
+    .project-number { color: var(--accent); font-size: .8rem; font-weight: 700; }
+    .project-art { margin: 18px 23px 0; min-height: 150px; border-radius: 14px; background: linear-gradient(135deg, var(--accent-soft), var(--warm)); display: grid; place-items: center; color: var(--accent-dark); }
+    .project-art .art-inner { width: 74%; border-radius: 10px; padding: 16px; background: var(--surface); box-shadow: var(--shadow); }
+    .fake-line { height: 6px; border-radius: 9px; background: var(--line); margin: 8px 0; }
+    .fake-line.short { width: 55%; }
+    .fake-line.mid { width: 76%; }
+    .project-body { padding: 22px 23px 25px; }
+    .project-body h3 { margin-bottom: 10px; }
+    .project-body p { font-size: .88rem; }
+    .text-link { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); font-size: .86rem; font-weight: 700; margin-top: 7px; }
+    .cert-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; }
+    .cert-item { display: flex; gap: 15px; padding: 20px; border: 1px dashed var(--line); border-radius: 16px; background: var(--surface); }
+    .cert-item .card-icon { flex: 0 0 44px; margin: 0; }
+    .cert-item p { font-size: .84rem; margin: 5px 0 0; }
+    .cert-note { font-size: .85rem; margin-top: 20px; }
+    .vision { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .vision-card { min-height: 210px; padding: 30px; border-radius: 22px; background: var(--accent-soft); }
+    .vision-card:nth-child(2) { background: var(--warm); }
+    .vision-card .big-icon { font-size: 1.8rem; margin-bottom: 20px; }
+    .vision-card p { color: var(--ink); }
+    .contact-panel { background: var(--accent-dark); color: #fff; border-radius: 26px; padding: clamp(28px, 5vw, 58px); display: grid; grid-template-columns: 1fr .8fr; gap: 35px; align-items: center; }
+    .contact-panel .eyebrow { color: #d0e0d0; }
+    .contact-panel h2 { margin-top: 12px; }
+    .contact-panel p { color: rgba(255,255,255,.75); }
+    .contact-links { display: grid; gap: 12px; }
+    .contact-link { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid rgba(255,255,255,.25); border-radius: 14px; transition: background .2s; overflow-wrap: anywhere; }
+    .contact-link:hover { background: rgba(255,255,255,.1); }
+    .contact-link span:first-child { font-size: 1.15rem; }
+    .contact-link small { display: block; opacity: .68; }
+    footer { padding: 27px 0; color: var(--muted); font-size: .82rem; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+    .back-top { color: var(--accent); font-weight: 700; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .modal { position: fixed; inset: 0; background: rgba(10,15,11,.6); z-index: 300; display: none; place-items: center; padding: 20px; }
+    .modal.open { display: grid; }
+    .modal-box { max-width: 540px; width: 100%; background: var(--surface); color: var(--ink); border-radius: 22px; padding: 28px; position: relative; box-shadow: var(--shadow); }
+    .modal-close { position: absolute; right: 17px; top: 17px; border: 1px solid var(--line); color: var(--ink); background: var(--bg); width: 34px; height: 34px; border-radius: 50%; }
+    .modal-box h3 { padding-right: 35px; font-size: 1.35rem; }
+    .modal-box p { margin-bottom: 0; }
+    @media (max-width: 900px) {
+      .nav-links { gap: 14px; } .nav-links a { font-size: .8rem; }
+      .hero-grid { gap: 35px; } .hero-photo { height: 390px; }
+      .cards { grid-template-columns: repeat(2,1fr); }
+      .about-grid { gap: 35px; }
+    }
+    @media (max-width: 720px) {
+      .container { width: min(100% - 32px, 560px); }
+      .nav-inner { height: 68px; }
+      .menu-btn { display: grid; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 0; right: 0; padding: 18px 24px 22px; background: var(--surface); border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch; gap: 0; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 0; font-size: .95rem; }
+      .hero { padding: 52px 0 65px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-photo-wrap { justify-self: center; width: min(78%, 320px); }
+      .hero-photo { height: 360px; }
+      .hero-stamp { left: -18px; bottom: 22px; }
+      .quick-facts { margin-top: 38px; }
+      .section { padding: 72px 0; }
+      .about-grid, .contact-panel { grid-template-columns: 1fr; gap: 25px; }
+      .cards { grid-template-columns: 1fr; }
+      .skills-grid, .cert-list, .vision { grid-template-columns: 1fr; }
+      .contact-panel { padding: 30px 23px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <!-- QUICK CUSTOMISATION:
+       1) Replace "Fathiah" / contact details with your preferred public details.
+       2) Upload your portrait as profile.jpg in the SAME repository folder.
+       3) Replace the sample project descriptions with work you can safely share.
+       4) Add certificate links only for certificates you actually hold.
+  -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a class="brand" href="#home">Fathiah<span>.</span></a>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a>
+        <a href="#projects">Projects</a><a href="#certificates">Certificates</a><a href="#vision">Vision</a><a href="#contact">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">☾</button>
+        <button class="menu-btn" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="reveal">
+            <div class="eyebrow">Accounting · Audit · Tax</div>
+            <h1>Hi, I'm<br><span>Fathiah.</span></h1>
+            <p class="hero-copy">An accounting graduate with hands-on experience in global tax operations, VAT reporting and general ledger reconciliation. I enjoy working with numbers, improving processes and turning financial data into clear, useful information.</p>
+            <div class="button-row">
+              <a class="btn btn-primary" href="#projects">Explore my portfolio <span aria-hidden="true">↗</span></a>
+              <a class="btn btn-outline" href="#contact">Let's connect</a>
+            </div>
+            <div class="quick-facts">
+              <div class="fact"><strong>Tax Operations</strong><span>Internship experience</span></div>
+              <div class="fact"><strong>Accounting</strong><span>Academic foundation</span></div>
+              <div class="fact"><strong>Continuous Learning</strong><span>Career mindset</span></div>
+            </div>
+          </div>
+          <div class="hero-photo-wrap reveal">
+            <img class="hero-photo" src="profile.jpg" alt="Fathiah's professional profile portrait" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <div class="hero-photo" style="display:none;place-items:center;text-align:center;padding:30px;color:var(--accent-dark);">
+              <div><div style="font-size:4rem;font-family:'Playfair Display',serif;">F.</div><strong>Add your portrait</strong><p style="font-size:.8rem;">Upload a photo named <code>profile.jpg</code></p></div>
+            </div>
+            <div class="hero-stamp"><strong>Curious by nature.</strong><small>Committed to learning and growing.</small></div>
+            <p class="photo-note">Professional portfolio · Updated 2026</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="about">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">A little about me</span><h2>Numbers with purpose.</h2><p>My background combines accounting education with practical exposure to tax processes in an international business environment.</p></div>
+        <div class="about-grid">
+          <div class="about-card reveal"><div class="quote-mark">“</div><p>I believe accuracy, curiosity and integrity are essential in every finance and tax role.</p><span class="eyebrow">My work philosophy</span></div>
+          <div class="about-content reveal">
+            <p>I hold a Diploma in Accountancy from Politeknik Port Dickson and have gained practical experience through my internship at Baker Hughes' Global Tax Centre. My work included supporting VAT returns for the Europe region, general ledger analysis and reconciliation in SAP, and assisting with Intrastat and ECSL reporting.</p>
+            <p>I am interested in building my career in accounting, audit and taxation, while continuing to strengthen my technical skills and professional judgement. I value teamwork, attention to detail and a willingness to learn from others.</p>
+            <div class="pill-row"><span class="pill">Detail-oriented</span><span class="pill">Analytical thinking</span><span class="pill">Team collaboration</span><span class="pill">Growth mindset</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">What I bring</span><h2>Skills & strengths.</h2><p>A mix of accounting knowledge, reporting exposure and digital tools to support everyday finance work.</p></div>
+        <div class="skills-grid">
+          <div class="skill-group reveal"><h3>Accounting & Tax</h3><div class="pill-row"><span class="pill">VAT Reporting Support</span><span class="pill">General Ledger Analysis</span><span class="pill">Reconciliation</span><span class="pill">Tax Compliance Support</span><span class="pill">Financial Statements</span><span class="pill">Audit Documentation</span></div></div>
+          <div class="skill-group reveal"><h3>Systems & Tools</h3><div class="pill-row"><span class="pill">Microsoft Excel</span><span class="pill">SAP</span><span class="pill">Oracle</span><span class="pill">Ariba</span><span class="pill">Microsoft Word</span><span class="pill">PowerPoint</span></div></div>
+          <div class="skill-group reveal"><h3>Reporting & Analysis</h3><div class="pill-row"><span class="pill">Data Checking</span><span class="pill">GL Reconciliation</span><span class="pill">Intrastat Support</span><span class="pill">ECSL Support</span><span class="pill">Document Management</span></div></div>
+          <div class="skill-group reveal"><h3>Professional Strengths</h3><div class="pill-row"><span class="pill">Attention to Detail</span><span class="pill">Time Management</span><span class="pill">Communication</span><span class="pill">Adaptability</span><span class="pill">Willingness to Learn</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="experience">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">My journey</span><h2>Experience & education.</h2><p>Selected experiences that have helped shape my accounting and tax foundation.</p></div>
+        <div class="timeline">
+          <article class="timeline-item reveal">
+            <div class="timeline-meta">INTERNSHIP · 2026</div><h3>Global Tax Centre Intern</h3><div class="place">Baker Hughes</div>
+            <ul><li>Supported VAT return preparation for the Europe region.</li><li>Performed general ledger analysis and reconciliation using SAP.</li><li>Assisted with monthly Intrastat and ECSL reporting activities.</li><li>Worked with internal systems and documentation including SAP, Ariba and Oracle.</li></ul>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-meta">INTERNSHIP · MAR – JUL 2022</div><h3>Accounts Intern</h3><div class="place">Comtax & Accounting Services</div>
+            <ul><li>Assisted with accounting entries and updates using Excel and accounting software.</li><li>Gained exposure to financial statements, including profit and loss and balance sheet reports.</li><li>Supported tax-related documentation and administrative tasks.</li></ul>
+          </article>
+          <article class="timeline-item reveal">
+            <div class="timeline-meta">EDUCATION</div><h3>Diploma in Accountancy</h3><div class="place">Politeknik Port Dickson</div>
+            <p>Built a foundation in accounting principles, financial reporting and business-related subjects.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Selected work</span><h2>Projects & practical learning.</h2><p>Use these cards to showcase non-confidential examples of your work. The descriptions below are starting points—edit them to match the work you can genuinely share.</p></div>
+        <div class="cards">
+          <article class="card project-card reveal">
+            <div class="project-top"><span class="project-number">PROJECT 01</span><span aria-hidden="true">↗</span></div>
+            <div class="project-art" aria-hidden="true"><div class="art-inner"><div class="fake-line short"></div><div class="fake-line"></div><div class="fake-line mid"></div><div class="fake-line"></div></div></div>
+            <div class="project-body"><h3>Excel Data Analysis</h3><p>A space to demonstrate spreadsheet organisation, formulas, data checks and summary reporting using a fictional or anonymised dataset.</p><a href="#" class="text-link project-open" data-title="Excel Data Analysis" data-description="Suggested portfolio item: upload a sample workbook using fictional data. Explain the purpose, formulas or features used, checks performed and key takeaway. Do not upload confidential company data.">View project details ↗</a></div>
+          </article>
+          <article class="card project-card reveal">
+            <div class="project-top"><span class="project-number">PROJECT 02</span><span aria-hidden="true">↗</span></div>
+            <div class="project-art" aria-hidden="true"><div class="art-inner"><div class="fake-line mid"></div><div style="display:flex;gap:8px;margin-top:15px"><div style="height:42px;flex:1;background:var(--accent-soft);border-radius:5px"></div><div style="height:42px;flex:1;background:var(--warm);border-radius:5px"></div><div style="height:42px;flex:1;background:var(--accent-soft);border-radius:5px"></div></div><div class="fake-line"></div></div></div>
+            <div class="project-body"><h3>Financial Statement Review</h3><p>A sample exercise to present how financial statement line items can be organised, compared and explained clearly.</p><a href="#" class="text-link project-open" data-title="Financial Statement Review" data-description="Suggested portfolio item: use a public or fictional set of figures to show a simple comparison of income statement or balance sheet items. Explain assumptions and avoid presenting sample data as actual client work.">View project details ↗</a></div>
+          </article>
+          <article class="card project-card reveal">
+            <div class="project-top"><span class="project-number">PROJECT 03</span><span aria-hidden="true">↗</span></div>
+            <div class="project-art" aria-hidden="true"><div class="art-inner"><div class="fake-line short"></div><div class="fake-line mid"></div><div class="fake-line"></div><div style="height:7px;width:65%;background:var(--accent);border-radius:9px;margin-top:14px"></div></div></div>
+            <div class="project-body"><h3>Tax Reporting Workflow</h3><p>A high-level overview of a tax reporting process, focusing on organisation, review steps and deadline awareness.</p><a href="#" class="text-link project-open" data-title="Tax Reporting Workflow" data-description="Suggested portfolio item: create a generic process diagram showing steps such as data gathering, validation, review and submission. Do not include internal Baker Hughes processes, tax figures, customer details or proprietary documents.">View project details ↗</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section soft-section" id="certificates">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Learning & development</span><h2>Certificates & courses.</h2><p>Add verified certificates, short courses or relevant training here as you build your professional profile.</p></div>
+        <div class="cert-list">
+          <div class="cert-item reveal"><div class="card-icon">✦</div><div><h3>Accounting & Finance</h3><p>Add the exact course or certificate name, issuing organisation and completion date.</p></div></div>
+          <div class="cert-item reveal"><div class="card-icon">▤</div><div><h3>Excel & Data Analysis</h3><p>Add a verified Excel, reporting or data analysis course if completed.</p></div></div>
+          <div class="cert-item reveal"><div class="card-icon">◎</div><div><h3>Tax & Compliance</h3><p>Add relevant tax, compliance or professional development training.</p></div></div>
+          <div class="cert-item reveal"><div class="card-icon">↗</div><div><h3>Other Professional Learning</h3><p>Add relevant workshops, programmes or certificates you have actually earned.</p></div></div>
+        </div>
+        <p class="cert-note">Note: These are editable placeholders, not claims that the certificates have already been obtained.</p>
+      </div>
+    </section>
+
+    <section class="section" id="vision">
+      <div class="container">
+        <div class="section-head reveal"><span class="eyebrow">Looking ahead</span><h2>My career vision.</h2><p>My goal is to keep developing the skills and professional judgement needed to contribute meaningfully in finance.</p></div>
+        <div class="vision">
+          <div class="vision-card reveal"><div class="big-icon">⌁</div><h3>Short-term goal</h3><p>Build strong practical foundations in accounting, audit or tax, learn from experienced colleagues and continue improving my technical and analytical skills.</p></div>
+          <div class="vision-card reveal"><div class="big-icon">✧</div><h3>Long-term direction</h3><p>Grow into a dependable finance professional with deeper expertise, sound judgement and a commitment to accuracy, integrity and continuous learning.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div><span class="eyebrow">Have an opportunity?</span><h2>Let's connect.</h2><p>I'm open to connecting with professionals and exploring opportunities in accounting, audit and tax.</p><a class="btn btn-outline" style="border-color:rgba(255,255,255,.55);color:#fff;margin-top:10px" href="mailto:YOUR.EMAIL@example.com">Email me ↗</a></div>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:YOUR.EMAIL@example.com"><span>✉</span><span><small>Email</small>YOUR.EMAIL@example.com</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer"><span>in</span><span><small>LinkedIn</small>Add your LinkedIn profile URL</span></a>
+            <a class="contact-link" href="https://github.com/" target="_blank" rel="noopener noreferrer"><span>⌘</span><span><small>GitHub</small>Add your GitHub profile URL</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="container footer-inner"><span>© <span id="year"></span> Fathiah. Designed with care.</span><a class="back-top" href="#home">Back to top ↑</a></div></footer>
+
+  <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box"><button class="modal-close" id="modalClose" aria-label="Close project details">×</button><h3 id="modalTitle">Project details</h3><p id="modalDescription"></p></div>
+  </div>
+
+  <script>
+    // Mobile navigation
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '×' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.textContent = '☰';
+    }));
+
+    // Light/dark mode (saved in this browser only)
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const dark = document.body.classList.contains('dark');
+      themeToggle.textContent = dark ? '☀' : '☾';
+      themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+
+    // Reveal sections as they enter the screen
+    const revealItems = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      revealItems.forEach(item => observer.observe(item));
+    } else {
+      revealItems.forEach(item => item.classList.add('visible'));
+    }
+
+    // Highlight active navigation link
+    const sections = document.querySelectorAll('main section[id]');
+    if ('IntersectionObserver' in window) {
+      const navObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            navLinks.querySelectorAll('a').forEach(a => {
+              a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+            });
+          }
+        });
+      }, { rootMargin: '-30% 0px -60% 0px' });
+      sections.forEach(section => navObserver.observe(section));
+    }
+
+    // Project detail popups
+    const modal = document.getElementById('projectModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    document.querySelectorAll('.project-open').forEach(link => link.addEventListener('click', event => {
+      event.preventDefault();
+      modalTitle.textContent = link.dataset.title;
+      modalDescription.textContent = link.dataset.description;
+      modal.classList.add('open');
+      document.getElementById('modalClose').focus();
+    }));
+    function closeModal() { modal.classList.remove('open'); }
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
